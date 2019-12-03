@@ -11,12 +11,17 @@ const getSeason = (lat, month) => {
 const SeasonDisplay = props => {
   console.log ('SeasonDisplay->props');
   const season = getSeason (props.lat, new Date ().getMonth ());
+  const text = season === 'winter'
+    ? 'burr, it is chilly'
+    : 'Lets hit the beach';
+
   console.log (props);
   return (
     <div>
-      <h1>Season Display</h1>
-      <h2>{props.lat}</h2>
-      <h3>{season}</h3>
+      {/*   {season === 'winter' ? 'burr, it is chilly' : 'Lets hit the beach'} */}
+      <br />
+      <hr />
+      <h1>{text}</h1>
     </div>
   );
 };
