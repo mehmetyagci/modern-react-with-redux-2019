@@ -46,8 +46,7 @@ class App extends React.Component {
     console.log ('componentWillUnmount');
   }
 
-  //React says we have to define render!!
-  render () {
+  renderContent () {
     console.log ('render -> My component was just rendered!');
 
     const {lat, errorMessage} = this.state;
@@ -61,6 +60,15 @@ class App extends React.Component {
     }
 
     return <Spinner message="Please accept location request" />;
+  }
+
+  //React says we have to define render!!
+  render () {
+    return (
+      <div className="border red">
+        {this.renderContent ()}
+      </div>
+    );
   }
 }
 
