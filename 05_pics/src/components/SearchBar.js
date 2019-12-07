@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 class SearchBar extends Component {
-  state = {term: ''};
+  state = {term: 'BMW'};
 
   render () {
     return (
@@ -12,7 +12,8 @@ class SearchBar extends Component {
             <input
               type="text"
               value={this.state.term}
-              onChange={e => this.setState ({term: e.target.value})}
+              onChange={e =>
+                this.setState ({term: e.target.value.toUpperCase ()})}
             />
           </div>
         </form>
