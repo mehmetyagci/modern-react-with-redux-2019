@@ -7,6 +7,7 @@ class SearchBar extends Component {
     event.preventDefault (); // cancelation of form submit automatically
 
     console.log (this.state.term);
+    this.props.onSearchSubmit (this.state.term);
   }
 
   render () {
