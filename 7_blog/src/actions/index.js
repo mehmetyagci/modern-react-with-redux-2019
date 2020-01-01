@@ -9,11 +9,19 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) => {
   console.log (getState ().posts);
   console.log ('fetched posts!');
 
-  const userIds = _.uniq (_.map (getState ().posts, 'userId'));
-  console.log ('userIds:', userIds);
-  userIds.forEach (id => dispatch (fetchUser (id)));
+  // // getting userIds first method
+  // const userIds = _.uniq (_.map (getState ().posts, 'userId'));
+  // console.log ('userIds:', userIds);
+  // userIds.forEach (id => dispatch (fetchUser (id)));
 
   // await Promise.all (userIds.map (id => dispatch (fetchUser (id))));
+
+  // getting userIds second method
+  _.chain (getState ().posts)
+    .map ('userId')
+    .uniq ()
+    .forEach (id => dispatch (fetchUser (id)))
+    .value ();
 };
 
 export const fetchPosts = () => async dispatch => {
