@@ -1,18 +1,9 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
+import {connect} from 'react-redux';
+import {createStream} from '../../actions';
 
 class StreamCreate extends React.Component {
-  // renderInput (formProps) {
-  //   console.log (formProps);
-  //   return <input {...formProps.input} />
-  //   // return (
-  //   //   <input
-  //   //     onChange={formProps.input.onChange}
-  //   //     value={formProps.input.value}
-  //   //   />
-  //   // );
-  // }
-
   renderError({error, touched}) {
     if (touched && error) {
       return (
