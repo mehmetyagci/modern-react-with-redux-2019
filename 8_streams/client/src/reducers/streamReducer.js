@@ -10,6 +10,8 @@ import {actionTypes} from 'redux-form';
 
 export default (state = {}, action) => {
   switch (action.type) {
+    case FETCH_STREAMS:
+      return {...state, ..._.mapKeys (action.payload, 'id')};
     case FETCH_STREAM:
       return {...state, [action.payload.id]: actionTypes.payload};
     case CREATE_STREAM:
