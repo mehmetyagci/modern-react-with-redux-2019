@@ -1,11 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchStream} from '../../actions';
+
+import {fetchStream, editStream} from '../../actions';
+import StreamForm from './StreamForm';
 
 class StreamEdit extends React.Component {
   componentDidMount () {
     this.props.fetchStream (this.props.match.params.id);
   }
+
+  onSubmit = formValues => {
+    console.log (formValues);
+  };
 
   render () {
     console.log ('StreamEdit:', this.props);
@@ -16,11 +22,12 @@ class StreamEdit extends React.Component {
     const id = this.props.match.params.id;
     return (
       <div>
-        StreamEdit
-        <br />
-        id: {id}
-        <br />
-        Title:{this.props.stream.title}
+        <h3>Edit a Stream</h3>
+        <StreamForm
+          // initialValues={{title: 'EDIT ME', description: 'CHANGE ME TOO'}}
+          initialValues={this.props.stream}
+          onSubmit={this.onSubmit}
+        />
       </div>
     );
   }
@@ -31,4 +38,7 @@ const mapStateToProps = (state, ownProps) => {
   return {stream: state.streams[ownProps.match.params.id]};
 };
 
-export default connect (mapStateToProps, {fetchStream}) (StreamEdit);
+export default connect (mapStateToProps, {
+  fetchStream,
+  editStream,
+}) (StreamEdit);
