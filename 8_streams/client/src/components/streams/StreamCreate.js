@@ -27,12 +27,12 @@ class StreamCreate extends React.Component {
   };
 
   onSubmit = formValues => {
-    console.log ('formValues:', formValues);
+    //console.log ('formValues:', formValues);
     this.props.createStream (formValues);
   };
 
   render () {
-    console.log (this.props);
+    //console.log (this.props);
     return (
       <form
         className="ui form error"
