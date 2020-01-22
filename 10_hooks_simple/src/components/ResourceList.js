@@ -15,7 +15,7 @@ const ResourceList = ({resource}) => {
     },
     [resource]
   );
-  
+
   //   const fetchResource = async resource => {
   //     const response = await axios.get (
   //       `https://jsonplaceholder.typicode.com/${resource}`
@@ -35,7 +35,11 @@ const ResourceList = ({resource}) => {
       <div>
         <h1>ResourceList</h1>
       </div>
-      <div />
+      <div>
+        <ul>
+          {resources.map (record => <li key={record.id}>{record.title}</li>)}
+        </ul>
+      </div>
       <div>
         <h3>{resources.length}</h3>
       </div>
