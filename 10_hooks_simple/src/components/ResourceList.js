@@ -1,6 +1,16 @@
 import React from 'react';
+import axios from 'axios';
 
 class ResourceList extends React.Component {
+  state = {resources: []};
+
+  async componentDidMount () {
+    const response = await axios.get (
+      `https://jsonplaceholder.typicode.com/${this.props.resource}`
+    );
+    this.setState ({resources: response.data});
+  }
+
   render () {
     return (
       <div>
@@ -9,6 +19,9 @@ class ResourceList extends React.Component {
         </div>
         <div>
           <h2>{this.props.resource}</h2>
+        </div>
+        <div>
+          <h3>{this.state.resources.length}</h3>
         </div>
       </div>
     );
